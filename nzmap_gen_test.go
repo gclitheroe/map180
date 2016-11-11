@@ -311,11 +311,17 @@ func TestNewZealand(t *testing.T) {
 		t.Fatal("Getting coast")
 	}
 
+	l, err := m.labels()
+	if err != nil {
+		t.Fatal("Getting labels")
+	}
+
 	var buf bytes.Buffer
 
 	buf.WriteString(fmt.Sprintf(responsive, m.width, m.height))
 	buf.WriteString(fmt.Sprintf(landPath, land))
 	buf.WriteString(fmt.Sprintf(lakePath, lakes))
+	buf.WriteString(labelsToSVG(l))
 
 	var out bytes.Buffer
 
@@ -365,12 +371,18 @@ func TestNewZealandRaoulChathams(t *testing.T) {
 		t.Fatal("Getting coast")
 	}
 
+	l, err := m.labels()
+	if err != nil {
+		t.Fatal("Getting labels")
+	}
+
 	var buf bytes.Buffer
 
 	buf.WriteString(fmt.Sprintf(responsive, m.width, m.height))
 	buf.WriteString(fmt.Sprintf(landPath, land))
 	// TODO no lakes are turning up?
 	buf.WriteString(fmt.Sprintf(lakePath, lakes))
+	buf.WriteString(labelsToSVG(l))
 
 	var out bytes.Buffer
 
@@ -423,11 +435,17 @@ func TestNewZealandSouth(t *testing.T) {
 		t.Fatal("Getting coast " + err.Error())
 	}
 
+	l, err := m.labels()
+	if err != nil {
+		t.Fatal("Getting labels")
+	}
+
 	var buf bytes.Buffer
 
 	buf.WriteString(fmt.Sprintf(responsive, m.width, m.height))
 	buf.WriteString(fmt.Sprintf(landPath, land))
 	buf.WriteString(fmt.Sprintf(lakePath, lakes))
+	buf.WriteString(labelsToSVG(l))
 
 	var out bytes.Buffer
 
@@ -475,12 +493,18 @@ func TestNewZealandRaoul(t *testing.T) {
 		t.Fatal("Getting coast")
 	}
 
+	l, err := m.labels()
+	if err != nil {
+		t.Fatal("Getting labels")
+	}
+
 	var buf bytes.Buffer
 
 	buf.WriteString(fmt.Sprintf(responsive, m.width, m.height))
 	buf.WriteString(fmt.Sprintf(landPath, land))
 	// TODO no lakes are turning up?
 	buf.WriteString(fmt.Sprintf(lakePath, lakes))
+	buf.WriteString(labelsToSVG(l))
 
 	var out bytes.Buffer
 
