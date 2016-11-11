@@ -135,6 +135,11 @@ insert into public.map180_layers (region,zoom,type,geom) select 1,3,1,
  and st_area(geom) *111*111 <= 0.5;
 
 -- map labels
+insert into public.map180_labels (type,zoom,name,geom) select 4, 0, name, ST_Transform(geom, 3857) 
+	from public.nztopo_1500k_names where desc_code = 'METR' AND size >5;
+	insert into public.map180_labels (type,zoom,name,geom) select 4, 1, name, ST_Transform(geom, 3857) 
+	from public.nztopo_1500k_names where desc_code = 'METR' AND size >5;
+	
 insert into public.map180_labels (type,zoom,name,geom) select 0, 2, name, ST_Transform(geom, 3857) 
 	from public.nztopo_1500k_names where desc_code = 'HILL' AND size >5;
 insert into public.map180_labels (type,zoom,name,geom) select 1, 2, name, ST_Transform(geom, 3857) 
